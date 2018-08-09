@@ -1,0 +1,12 @@
+version: '3'
+services:
+  mirrors:
+    images: "gsmlg/mirrors.gsmlg.org:latest"
+    ports:
+      - "10808:80"
+    volumes:
+      - ./mirrors.js:/mirrors.js
+      - mirrors_data:/mirrors
+volumes:
+  mirrors_data: {}
+          
