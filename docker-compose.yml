@@ -1,7 +1,7 @@
 version: '3'
 services:
   mirrors:
-    images: "gsmlg/mirrors.gsmlg.org:latest"
+    image: "gsmlg/mirrors.gsmlg.org:latest"
     ports:
       - "10808:80"
     volumes:
