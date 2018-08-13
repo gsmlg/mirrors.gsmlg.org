@@ -8,6 +8,6 @@ ENV NAME mirrors
 
 EXPOSE 80
 
-COPY server.js mirrors.js entrypoint.sh mirrors /
+COPY server.js mirrors.js entrypoint.sh mirrors.conf /
 
 ENTRYPOINT ["/entrypoint.sh"]
