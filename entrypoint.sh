@@ -7,6 +7,9 @@ NODE_PORT=${PORT:-80}
 export NODE_PORT
 
 [ ! -d mirrors ] && mkdir mirrors
+[ ! -d sites ] && mkdir sites
+
+sed "s/SERVER_NAME/${NAME:-mirrors}/g" /mirrors > /sites/mirrors
 
 node /server.js
 

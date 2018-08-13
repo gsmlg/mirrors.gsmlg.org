@@ -1,5 +1,5 @@
 upstream mirrors {
-  server CONTAINER_NAME:80;
+  server SERVER_NAME:80;
 }
 
 server {
