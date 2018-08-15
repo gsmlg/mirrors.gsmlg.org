@@ -11,6 +11,6 @@ ENV MIRRORS_PATH=/mirrors \
 
 EXPOSE 80
 
-COPY server.js mirrors.js entrypoint.sh mirrors.conf /
+COPY server.js mirrors.js entrypoint.sh /
 
 ENTRYPOINT ["/entrypoint.sh"]
