@@ -2,7 +2,7 @@
 
 set -e
 
-NODE_PORT=${PORT:-80}
+NODE_PORT=${NODE_PORT:-80}
 
 export NODE_PORT
 
@@ -11,7 +11,7 @@ export NODE_PORT
 
 cat <<EOF > /sites/mirrors
 upstream mirrors {
-  server ${NAME}:${PORT};
+  server ${NAME}:${NODE_PORT};
 }
 
 server {
