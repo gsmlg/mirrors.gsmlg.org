@@ -8,7 +8,7 @@ const mirrors = require('./mirrors');
 
 const MIRRORS_PATH = process.env.MIRRORS_PATH || './mirrors';
 const PORT = process.env.NODE_PORT || 80;
-const SERVER_MODE = process.env.SERVER_MODE;
+const SERVER_MODE = process.env.MASTER_URL ? process.env.SERVER_MODE : 'master';
 const MASTER_URL = process.env.MASTER_URL;
 
 const ensureDirExists = (targetDir, isRelativeToScript = false) => {
@@ -67,7 +67,7 @@ const app = (req, res) => {
 
       fs.access(localPath, fs.constants.F_OK, (err) => {
         if (err) {
-          const fullUrl = SERVER_MODE === 'master' ? cdnUrl + url.slice(prefix.length) : MASTER_URL + prefix;
+          const fullUrl = SERVER_MODE !== 'slave' ? cdnUrl + url.slice(prefix.length) : MASTER_URL + prefix;
           const { host, protocol, path: p } = URL.parse(fullUrl);
 
           makeFetch(fullUrl, (reqRes) => {
