@@ -39,6 +39,8 @@ server {
   access_log /var/log/nginx/mirrors.access.log;
   error_log /var/log/nginx/mirrors.error.log;
 
+  include /etc/nginx/ssl.conf;
+
   location / {
     add_header Access-Control-Allow-Origin *;
     add_header Access-Remote-Addr \$remote_addr;
