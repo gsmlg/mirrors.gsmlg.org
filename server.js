@@ -59,7 +59,7 @@ const makeFetch = (fullUrl, cb) => {
 
 const app = (req, res) => {
   const { url } = req;
-
+  console.log(`access: ${url}`);
   const match = mirrors.some(([cdnUrl, prefix]) => {
 
     if (prefix === url.slice(0, prefix.length)) {
@@ -67,7 +67,7 @@ const app = (req, res) => {
 
       fs.access(localPath, fs.constants.F_OK, (err) => {
         if (err) {
-          const fullUrl = SERVER_MODE !== 'slave' ? cdnUrl + url.slice(prefix.length) : MASTER_URL + prefix;
+          const fullUrl = SERVER_MODE !== 'slave' ? cdnUrl + url.slice(prefix.length) : MASTER_URL + url;
           const { host, protocol, path: p } = URL.parse(fullUrl);
 
           makeFetch(fullUrl, (reqRes) => {
