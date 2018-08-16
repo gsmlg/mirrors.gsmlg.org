@@ -10,7 +10,7 @@ export NODE_PORT
 [ ! -d sites ] && mkdir sites
 
 cat <<EOF > /sites/mirrors
-upstream mirrors {
+upstream @mirrors {
   server ${NAME}:${NODE_PORT};
 }
 
@@ -27,7 +27,7 @@ server {
     add_header Access-Remote-Addr \$remote_addr;
     proxy_set_header X-Real-IP \$remote_addr;
     proxy_set_header host \$host;
-    proxy_pass http://mirrors;
+    proxy_pass http://@mirrors;
   }
 }
 
@@ -46,7 +46,7 @@ server {
     add_header Access-Remote-Addr \$remote_addr;
     proxy_set_header X-Real-IP \$remote_addr;
     proxy_set_header host \$host;
-    proxy_pass http://mirrors;
+    proxy_pass http://@mirrors;
   }
 }
 EOF
